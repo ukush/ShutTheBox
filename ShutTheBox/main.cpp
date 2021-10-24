@@ -78,41 +78,41 @@ int main()
 
 			if (roll < 10 && (d1 != d2))
 			{
-					if ((!box->hasTileBeenShut(d1) && !box->hasTileBeenShut(d2) && !box->hasTileBeenShut(roll))) // if all tiles are up
-					{
-						score += roll; // the score is incremented by the sum of dice regardless of which option they choose
+				if ((!box->hasTileBeenShut(d1) && !box->hasTileBeenShut(d2) && !box->hasTileBeenShut(roll))) // if all tiles are up
+				{
+					score += roll; // the score is incremented by the sum of dice regardless of which option they choose
 
-						//give user the option to choose which tiles to shut
-						cout << "You have the choice to shut the following tiles: " << endl;
-						cout << "Option 1: Tiles " << d1 << " and " << d2 << endl;
-						cout << "Option 2: Tile " << roll << endl;
-						cout << "Please select below: " << endl;
-						cin >> option;
+					//give user the option to choose which tiles to shut
+					cout << "You have the choice to shut the following tiles: " << endl;
+					cout << "Option 1: Tiles " << d1 << " and " << d2 << endl;
+					cout << "Option 2: Tile " << roll << endl;
+					cout << "Please select below: " << endl;
+					cin >> option;
 
-						if (option == 1)
-						{
-							box->shutTile(d1);
-							box->shutTile(d2);
-						}
-						else
-							box->shutTile(roll);
-					}
-					else if ((box->hasTileBeenShut(d1) || box->hasTileBeenShut(d2)) && !box->hasTileBeenShut(roll)) // can only use the sum
-					{
-						score += roll;
-						cout << "You can only shut tile " << roll << endl;
-						box->shutTile(roll);
-					}
-					else if ((!box->hasTileBeenShut(d1) && !box->hasTileBeenShut(d2)) && box->hasTileBeenShut(roll)) // use can only do both
+					if (option == 1)
 					{
 						box->shutTile(d1);
 						box->shutTile(d2);
-						score += roll;
 					}
-					else // all are shut
-					{
-						cannotShutAnyMore = endRound(score);
-					}
+					else
+						box->shutTile(roll);
+				}
+				else if ((box->hasTileBeenShut(d1) || box->hasTileBeenShut(d2)) && !box->hasTileBeenShut(roll)) // can only use the sum
+				{
+					score += roll;
+					cout << "You can only shut tile " << roll << endl;
+					box->shutTile(roll);
+				}
+				else if ((!box->hasTileBeenShut(d1) && !box->hasTileBeenShut(d2)) && box->hasTileBeenShut(roll)) // use can only do both
+				{
+					box->shutTile(d1);
+					box->shutTile(d2);
+					score += roll;
+				}
+				else // all are shut
+				{
+					cannotShutAnyMore = endRound(score);
+				}
 			}
 			else if ((roll < 10) && (d1 == d2))
 			{
