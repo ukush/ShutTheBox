@@ -10,7 +10,8 @@ class Box
 {
 private:
 	
-	int* tiles = (int*)malloc(sizeof(int) * 9);
+	//int* tiles = (int*)malloc(sizeof(int) * 9);	// perhaps use a constant for 9 here and you would be better off creating the memory in the constructor
+	int* tiles;
 	vector<string> states;
 
 
@@ -19,9 +20,12 @@ public:
 
 	Box(); // empty constructor
 
-	virtual ~Box();
+	/* I know I had a virtual destructor in a class that was never being derived from, but I did that to demonstrate the virtual keyword.  
+	   If you know a class is not going to have derived classes, don't bother with virtual as all virtual functions have a slight run-time time 
+		 overhead as the system looks for derived version - a rather moot point in fairness though*/
+	virtual ~Box();		
 
-	void setTiles();
+	void setTiles();	// very moot point now, but perhaps a better name would be initaliseTiles
 
 	void displayTiles();
 
@@ -45,7 +49,7 @@ public:
 	bool hasTileBeenShut(int roll) // inline due to high frequency of calls
 	{
 		{
-			if (states[roll - 1] == "down")
+			if (states[roll - 1] == "down")	// why not just use an array of bools for this?
 			{
 				return true;
 			}

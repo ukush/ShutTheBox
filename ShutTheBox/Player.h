@@ -1,9 +1,9 @@
+#pragma once	// put this at the top of your header files
 #include <iostream>
 #include <string>
 
 using namespace std;
 
-#pragma once
 class Player
 {
 private:

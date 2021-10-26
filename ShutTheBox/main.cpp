@@ -50,7 +50,8 @@ int main()
 
 	for (int i = 1; i <= numOfRounds; i++)
 	{
-
+		// I think you might also need to reset cannotShutAnyMore to false here too as well as turn?
+		
 		// reset the tiles for the next round
 		box->setTiles();
 
@@ -76,6 +77,7 @@ int main()
 
 			int option;
 
+			// this section could perhaps do with breaking down into smaller methods, but again, perhaps a moot point.
 			if (roll < 10 && (d1 != d2))
 			{
 				if ((!box->hasTileBeenShut(d1) && !box->hasTileBeenShut(d2) && !box->hasTileBeenShut(roll))) // if all tiles are up
@@ -161,7 +163,7 @@ int main()
 
 			turn++;
 
-		} while ((!box->allTilesDown()) || (turn > MAX_TURNS) || (cannotShutAnyMore));
+		} while ((!box->allTilesDown()) || (turn > MAX_TURNS) || (cannotShutAnyMore));	// not entirely sure this condition is correct for the while loop, but I guess if it works, it works
 
 			cout << "Round : " << i << " Complete" << endl;
 			
