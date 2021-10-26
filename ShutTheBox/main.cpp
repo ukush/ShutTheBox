@@ -175,7 +175,8 @@ int main()
 			// release memory
 			delete dice;
 			delete player1;
-			delete[] box; // calls the deconstructor which releases array memory
+			// box isn't an array, so you don't need to use the delete[] operator, just the delete one
+			delete box; // calls the deconstructor which releases array memory
 
 	return 0;
 }
